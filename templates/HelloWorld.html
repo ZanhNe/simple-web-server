@@ -1,11 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Simple Python Socket Server</title>
+    <link rel="stylesheet" href="/static/HelloWorld.css" />
   </head>
   <body>
-    <h1>HELLO WORLD</h1>
+    <div class="container">
+      <header>
+        <h1>Python Socket Web Server</h1>
+        <p class="subtitle">
+          Một web server đơn giản được xây dựng với Python Socket
+        </p>
+      </header>
+
+      <div class="content">
+        <div class="card">
+          <h2>Giới thiệu</h2>
+          <p>
+            Đây là một trang web mẫu được tạo cho web server Socket Python của
+            bạn. Web server này sử dụng module socket trong Python để xử lý các
+            request HTTP và phản hồi với nội dung HTML.
+          </p>
+          <p>
+            Socket server là một phương pháp mạnh mẽ để xây dựng các ứng dụng
+            web từ cơ bản, giúp bạn hiểu sâu hơn về cách hoạt động của web
+            server.
+          </p>
+          <a href="#" class="btn">Tìm hiểu thêm</a>
+        </div>
+
+        <div class="card">
+          <h2>Tính năng</h2>
+          <ul>
+            <li>Xử lý các HTTP request đơn giản</li>
+            <li>Phục vụ nội dung HTML, CSS và JavaScript</li>
+            <li>Hỗ trợ các phương thức GET và POST</li>
+            <li>Khả năng mở rộng dễ dàng</li>
+            <li>Hiệu suất tốt cho các ứng dụng nhỏ</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Mã nguồn đơn giản</h2>
+          <div class="code-block">
+            import socket<br />
+            <br />
+            HOST = '127.0.0.1'<br />
+            PORT = 8080<br />
+            <br />
+            server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)<br />
+            server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)<br />
+            server.bind((HOST, PORT))<br />
+            server.listen(1)<br />
+            <br />
+            print(f"Server running on http://{HOST}:{PORT}")<br />
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Hướng dẫn</h2>
+          <p>Để chạy socket server:</p>
+          <ol>
+            <li>Lưu mã Python vào một file (ví dụ: server.py)</li>
+            <li>Lưu nội dung HTML này vào một file (ví dụ: index.html)</li>
+            <li>Chạy server với lệnh <code>python server.py</code></li>
+            <li>
+              Truy cập server qua trình duyệt tại địa chỉ
+              <code>http://127.0.0.1:8080</code>
+            </li>
+          </ol>
+          <a href="#" class="btn">Xem tài liệu đầy đủ</a>
+        </div>
+      </div>
+
+      <footer>
+        <p>© 2025 Python Socket Web Server | Được phát triển bởi bạn</p>
+      </footer>
+    </div>
   </body>
 </html>
