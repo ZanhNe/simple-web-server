@@ -68,8 +68,20 @@ class Server:
                         "\r\n"
                     )
                     return ''.join(response).encode()
+            elif uri == '/about.html':
+                with open('templates/about.html', 'r', encoding='utf-8') as file:
+                    html_content = file.read()
+                response = (
+                    "HTTP/1.1 200 OK\r\n",
+                    "Content-Type: text/html\r\n",
+                    f"Content-Length: {len(html_content.encode())}\r\n",
+                    "Connection: close\r\n",
+                    "\r\n",
+                    f"{html_content}"
+                )
+                return ''.join(response).encode()
             elif uri == '/':
-                with open('templates/HelloWorld.html', 'r', encoding='utf-8') as file:
+                with open('templates/home.html', 'r', encoding='utf-8') as file:
                     html_content = file.read()
                 response = (
                     "HTTP/1.1 200 OK\r\n",
@@ -79,6 +91,13 @@ class Server:
                     "\r\n",
                     f"{html_content}"
                 )
+                return ''.join(response).encode()
+            else:
+                response = (
+                        "HTTP/1.1 404 Not Found\r\n,"
+                        "Connection: close\r\n",
+                        "\r\n"
+                    )
                 return ''.join(response).encode()
         else:
             return None
