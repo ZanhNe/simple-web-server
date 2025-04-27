@@ -76,7 +76,7 @@ class Server:
                     )
                     return ''.join(response).encode()
             elif uri == '/about.html':
-                with open('templates/about.html', 'r', encoding='utf-8') as file:
+                with open(f"{base_dir}\\templates\\{uri.replace('/', '\\')}", 'r', encoding='utf-8') as file:
                     html_content = file.read()
                 response = (
                     "HTTP/1.1 200 OK\r\n",
@@ -88,7 +88,7 @@ class Server:
                 )
                 return ''.join(response).encode()
             elif uri == '/':
-                with open('templates/home.html', 'r', encoding='utf-8') as file:
+                with open(f"{base_dir}\\templates\\{uri.replace('/', '\\')}home.html", 'r', encoding='utf-8') as file:
                     html_content = file.read()
                 response = (
                     "HTTP/1.1 200 OK\r\n",
