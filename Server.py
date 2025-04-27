@@ -1,5 +1,7 @@
 from socket import *
+import time
 import os
+import threading
 
 base_dir = os.path.dirname(__file__)
 
@@ -17,11 +19,8 @@ class Server:
             while self.is_running:
                 try:
                     connection, addr = self.server.accept()
-                    request = connection.recv(1024) 
-                    response = self.resolve_request(request)
-                    if response:
-                        connection.sendall(response)
-                    connection.close()
+                    thread = threading.Thread(target=self.seperate_thread, args=(connection, addr,), daemon=True)
+                    thread.start()
 
                 except timeout:
                     continue
@@ -30,6 +29,14 @@ class Server:
         finally:
             self.shutdown()
             print("Server has closed")
+
+    def seperate_thread(self, connection: socket, addr: tuple):
+        request = connection.recv(1024) 
+        response = self.resolve_request(request)
+        if response:
+            time.sleep(5)
+            connection.sendall(response)
+        connection.close()
 
     def shutdown(self):
         self.server.close()
